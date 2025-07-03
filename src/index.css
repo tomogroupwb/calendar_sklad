@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Стили для календаря */
+.fc-day-header,
+.fc-day-number,
+.fc-list-day-text,
+.fc-list-day-side-text,
+.fc-col-header-cell-cushion,
+.fc-daygrid-day-number,
+.fc-daygrid-day-top {
+  color: #1F2937 !important; /* neutral-800 */
+  font-weight: 500;
+}
+
+/* Позиционируем число дня в левом углу */
+.fc-daygrid-day-top {
+  justify-content: flex-start !important; /* Выравниваем по левому краю вместо правого */
+  padding: 4px !important;
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+.fc-daygrid-day-number {
+  margin-left: 4px !important; /* Отступ слева вместо auto */
+  margin-right: auto !important; /* Auto справа для выравнивания по левому краю */
+}
+
+.fc-day-today {
+  background-color: white !important; /* Белый фон как на фото */
+  box-shadow: 0 0 0 2px #0051E7 !important; /* Синий контур как на фото */
+  border-radius: 0px !important; /* Убираем скругление углов чтобы было как на фото */
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+/* Добавляем яркую метку "Сегодня" */
+.fc-day-today::before {
+  content: "Сегодня" !important;
+  position: absolute !important;
+  top: 2px !important;
+  left: 32px !important; /* Смещаем вправо от числа */
+  background-color: #0051E7 !important;
+  color: white !important;
+  padding: 1px 5px !important; /* Уменьшаем отступы */
+  border-radius: 3px !important;
+  font-size: 9px !important; /* Уменьшаем размер шрифта */
+  font-weight: bold !important;
+  z-index: 10 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Специальные стили для списочного представления */
+.fc-list-day.fc-day-today .fc-list-day-cushion {
+  position: relative !important;
+}
+
+.fc-list-day.fc-day-today .fc-list-day-cushion::after {
+  content: "Сегодня" !important;
+  position: absolute !important;
+  top: 50% !important;
+  right: 8px !important;
+  transform: translateY(-50%) !important;
+  background-color: #0051E7 !important;
+  color: white !important;
+  padding: 1px 5px !important;
+  border-radius: 3px !important;
+  font-size: 9px !important;
+  font-weight: bold !important;
+  z-index: 5 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+.fc-list-day.fc-day-today .fc-list-day-text {
+  margin-right: 60px !important;
+}
+
+/* Скрываем основную метку "Сегодня" в списочном представлении */
+.fc-list-view .fc-day-today::before {
+  display: none !important;
+}
+
+/* Мобильная версия для списочного представления */
+@media (max-width: 640px) {
+  .fc-list-day.fc-day-today .fc-list-day-cushion::after {
+    font-size: 8px !important;
+    padding: 1px 4px !important;
+    right: 4px !important;
+  }
+  
+  .fc-list-day.fc-day-today .fc-list-day-text {
+    margin-right: 45px !important;
+  }
+  
+  .fc-list-day-side-text {
+    padding-right: 45px !important;
+  }
+}
+
+.fc-day-today .fc-daygrid-day-number {
+  background-color: #0051E7 !important; /* Цвет ozon */
+  color: white !important; /* Белый текст */
+  border-radius: 50% !important; /* Круглый фон */
+  width: 22px !important; /* Уменьшаем размер */
+  height: 22px !important; /* Уменьшаем размер */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 600 !important; /* Менее жирный текст */
+  margin-left: 4px !important; /* Размещаем слева */
+  margin-right: auto !important; /* Убираем margin-right */
+  margin-top: 3px !important; /* Уменьшаем отступ сверху */
+  box-shadow: 0 1px 2px rgba(0, 81, 231, 0.3) !important; /* Уменьшаем тень */
+}
+
+/* Стиль для рамки вокруг ячейки сегодняшнего дня */
+.fc .fc-day-today {
+  border: 2px solid #0051E7 !important; /* Синяя рамка вокруг ячейки */
+}
+
+.fc th,
+.fc-scrollgrid-sync-inner,
+.fc-list-day-cushion {
+  background-color: #F9FAFB !important; /* neutral-50 */
+  color: #1F2937 !important; /* neutral-800 */
+  font-weight: 600;
+}
+
+.fc-col-header-cell,
+.fc-daygrid-day.fc-day-sat,
+.fc-daygrid-day.fc-day-sun {
+  background-color: #F9FAFB;
+}
+
+/* Цвет временных интервалов и сетки */
+.fc-timegrid-slot,
+.fc-timegrid-slot-label {
+  color: #4B5563 !important; /* neutral-600 */
+}
+
+/* Улучшаем видимость событий */
+.fc-event-title,
+.fc-event-title-container,
+.fc-event-time,
+.fc-list-event-title,
+.fc-list-event-dot {
+  font-weight: 600 !important;
+  color: #111827 !important; /* neutral-900 - самый темный */
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.5); /* легкая текстовая тень для улучшения читаемости */
+}
+
+/* Дополнительное улучшение контраста для разных маркетплейсов */
+.fc-event.bg-blue-50 .fc-event-title {
+  color: #00399F !important; /* темно-синий - новый цвет */
+}
+
+.fc-event.bg-purple-50 .fc-event-title {
+  color: #6B0772 !important; /* темно-фиолетовый */
+}
+
+.fc-event.bg-yellow-50 .fc-event-title {
+  color: #000000 !important; /* черный для яндекса */
+}
+
+.fc-list-event:hover td {
+  background-color: #F3F4F6 !important; /* neutral-100 */
+}
