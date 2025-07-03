@@ -45,6 +45,11 @@ googleProvider.setCustomParameters({
 // Функция для входа через Google
 export const loginWithGoogle = async (): Promise<{user: any, accessToken: string | null, refreshToken: string | null}> => {
   console.log('Начинаем процесс входа через Firebase Google Auth...');
+  console.log('Current domain:', window.location.hostname);
+  console.log('Firebase config:', {
+    authDomain: firebaseConfig.authDomain,
+    projectId: firebaseConfig.projectId
+  });
   
   try {
     // Проверяем, есть ли уже вошедший пользователь
